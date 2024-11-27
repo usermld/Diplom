@@ -4,11 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Create_file{
-    public static ArrayList<File> create(ArrayList<File> f) {
+    public static void create(ArrayList<File> f) {
         System.out.println("Введите имя файла: ");
         Scanner scanner = new Scanner(System.in);
         String name = scanner.nextLine();
@@ -22,7 +21,7 @@ public class Create_file{
             if (created)
                 System.out.println("Файл создан");
         } catch (IOException ex) {
-            System.out.println(ex.getMessage());
+            System.out.println("Файл не был создан");
         }
 
         try(FileWriter writer = new FileWriter(name, true))
@@ -31,9 +30,8 @@ public class Create_file{
             writer.flush();
         }
         catch(IOException ex){
-            System.out.println(ex.getMessage());
+            System.out.println("Текст не был записан в файл");
         }
-        return f;
     }
 
 }
