@@ -12,7 +12,6 @@ public class FTP_connect  {
     public static String ip = "185.180.223.189";
     public static String user = "ftpuser";
     public static String psw = "1111";
-    public static File share = new File("C:/Users/user/Desktop/demo/share/");
 
 
     FTPClient con = null;
@@ -47,10 +46,8 @@ public class FTP_connect  {
         try {
             con = new FTPClient();
             con.connect(ip);
-            //System.out.println("connect");
             if (con.login(user, psw)) {
-                //System.out.println("succes");
-                con.enterLocalPassiveMode(); // important!
+                con.enterLocalPassiveMode();
                 con.setFileType(FTP.BINARY_FILE_TYPE);
                 try {
                     System.out.println("Введите название файла из папки share который нужно скопировать");
@@ -65,10 +62,9 @@ public class FTP_connect  {
             }
             con.logout();
             con.disconnect();
-           // System.out.println("disconect");
             System.out.println("Файл скопирован на FTP сервер");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Подключение не удалось");
         }
     }
 }
