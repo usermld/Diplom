@@ -14,9 +14,6 @@ public class FTP_connect  {
     public static String psw = "1111";
     public static File share = new File("C:/Users/user/Desktop/demo/share/");
 
-
-    FTPClient con = null;
-
     public static String getIp() {
         return ip;
     }
@@ -47,17 +44,15 @@ public class FTP_connect  {
         try {
             con = new FTPClient();
             con.connect(ip);
-            //System.out.println("connect");
             if (con.login(user, psw)) {
-                //System.out.println("succes");
-                con.enterLocalPassiveMode(); // important!
+                con.enterLocalPassiveMode();
                 con.setFileType(FTP.BINARY_FILE_TYPE);
                 try {
                     System.out.println("Введите название файла из папки share который нужно скопировать");
                     String file_name = scanner.nextLine();
-                    String data = "C:/Users/user/Desktop/demo/share/" + file_name;
+                    String data = share + file_name;
                     FileInputStream in = new FileInputStream(new File(data));
-                    boolean result = con.storeFile("/" + file_name, in);
+                    boolean result = con.storeFile("C:/Users/user/Desktop/demo/share/" + file_name, in);
                     in.close();
                 } catch (FileNotFoundException e) {
                     System.out.println("Файл не найден");
@@ -65,10 +60,9 @@ public class FTP_connect  {
             }
             con.logout();
             con.disconnect();
-           // System.out.println("disconect");
             System.out.println("Файл скопирован на FTP сервер");
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("Подключение не удалось");
         }
     }
 }

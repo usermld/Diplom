@@ -6,13 +6,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-
-
 public class Start {
     public static void go_2() {
         while (true) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("1. Просмотр текущих параметров подключения");
+            System.out.println("\n1. Просмотр текущих параметров подключения");
             System.out.println("2. Изменение параметров подключения");
             System.out.println("3. Вернуться в основное меню");
 
@@ -32,6 +30,7 @@ public class Start {
                     if (new_ip == "") System.out.println("ip адрес не изменён");
                     else FTP_connect.setIp(new_ip);
 
+
                     System.out.println("Введите имя нового пользователя");
 
                     String new_user = scanner.nextLine();
@@ -48,6 +47,8 @@ public class Start {
                     break;
                 case 3:
                     return;
+                default:
+                    System.out.println("Такой функции нет. Попробуйте ещё раз");
             }
         }
     }
@@ -62,11 +63,9 @@ public class Start {
             System.out.println("Папка share создана");
 
         ArrayList<File> file_list = new ArrayList<File>(Arrays.asList(dir.listFiles()));
-        //ArrayList<String> file_list_name = new ArrayList<String>(Arrays.asList(dir.list()));
-        int i = -1;
-        int j = -1;
 
-        while (i != 1) {
+        while (true) {
+            System.out.println("\nИнструкция пользования: \n Для выбора необходимой функции введите номер этой функции в консоль");
             System.out.println("\nMenu:");
             System.out.println("1. Создать файл");
             System.out.println("2. Добавить файл");
