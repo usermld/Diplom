@@ -62,11 +62,9 @@ public class Start {
             System.out.println("Папка share создана");
 
         ArrayList<File> file_list = new ArrayList<File>(Arrays.asList(dir.listFiles()));
-        //ArrayList<String> file_list_name = new ArrayList<String>(Arrays.asList(dir.list()));
-        int i = -1;
-        int j = -1;
 
-        while (i != 1) {
+        while (true) {
+            System.out.println("\nИнструкция пользования: \nДля выбора необходимой функции введите номер этой функции в консоль");
             System.out.println("\nMenu:");
             System.out.println("1. Создать файл");
             System.out.println("2. Добавить файл");
@@ -83,7 +81,7 @@ public class Start {
                     Create_file.create(file_list);
                     break;
                 case 2:
-                    Add_file.add();
+                    Add_file.add(file_list);
                     break;
                 case 3:
                     FTP_connect.push_file();
